@@ -12,7 +12,7 @@ export const search = async (req: Request, res: Response, next: NextFunction) =>
       .createQueryBuilder('users')
       .where('users.name like :name', { name: `%${search}%` })
       .getMany();
-
+    //comment
     if (!user) {
       const customError = new CustomError(404, 'General', `User with not found.`, ['User not found.']);
       return next(customError);
