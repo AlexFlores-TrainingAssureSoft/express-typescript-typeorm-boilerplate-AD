@@ -1,4 +1,4 @@
-#  Express / TypeScript / TypeORM RESTful API boilerplate-AD
+#  Express / TypeScript / TypeORM RESTful API boilerplate
 
 [![CI][build-badge]][build-url]
 [![TypeScript][typescript-badge]][typescript-url]
