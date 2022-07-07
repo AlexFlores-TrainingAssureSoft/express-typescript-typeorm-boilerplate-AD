@@ -7,12 +7,10 @@ import { CustomError } from 'utils/response/custom-error/CustomError';
 export const createUser = async (req: Request, res: Response, next: NextFunction) => {
   console.log(req.body);
   console.log('POST USERCREATE');
-  const { name , username, email, password } = req.body;
+  const { name, username, email, password } = req.body;
   // const { username, name } = req.body;
-
-    const userRepository = getRepository(User);
+  const userRepository = getRepository(User);
   try {
-
     const user = await userRepository.findOne({ where: { email } });
 
     if (user) {
@@ -32,11 +30,10 @@ export const createUser = async (req: Request, res: Response, next: NextFunction
       await userRepository.save(newUser);
       //const user = await userRepository.createQueryBuilder().insert().into('users').values(newUser).execute();
       res.customSuccess(200, 'User successfully created.');
-     } catch (err) {
+    } catch (err) {
       const customError = new CustomError(400, 'Raw', `User '${email}' can't be created`, null, err);
       return next(customError);
-     }
-    
+    }
   } catch (err) {
     const customError = new CustomError(400, 'Raw', 'Error', null, err);
     return next(customError);
