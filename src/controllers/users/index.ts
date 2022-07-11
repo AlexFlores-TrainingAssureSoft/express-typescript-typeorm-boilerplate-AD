@@ -4,4 +4,4 @@ export * from './list';
 export * from './show';
 export * from './search';
 export * from './usersPage';
-export * from './userCreate';
+export * from './createUser';

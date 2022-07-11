@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { list, show, edit, destroy, search, usersPage, userCreate } from 'controllers/users';
+import { list, show, edit, destroy, search, usersPage, createUser } from 'controllers/users';
 import { checkJwt } from 'middleware/checkJwt';
 import { checkRole } from 'middleware/checkRole';
 import { validatorEdit } from 'middleware/validation/users';
@@ -15,7 +15,7 @@ router.get('/filter/:search', [checkJwt, checkRole(['ADMINISTRATOR'], true)], se
 
 router.get('/usersPage', [checkJwt, checkRole(['ADMINISTRATOR'], true)], usersPage);
 
-router.get('/userCreate', [checkJwt, checkRole(['ADMINISTRATOR'], true)], userCreate);
+router.post('/createUser', /*[checkJwt, checkRole(['ADMINISTRATOR'], true)],*/ createUser);
 
 router.patch('/:id([0-9]+)', [checkJwt, checkRole(['ADMINISTRATOR'], true), validatorEdit], edit);
 
