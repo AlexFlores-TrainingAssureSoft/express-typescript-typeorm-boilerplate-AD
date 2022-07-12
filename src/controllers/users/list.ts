@@ -14,7 +14,7 @@ export const list = async (req: Request, res: Response, next: NextFunction) => {
       content: users,
       links: [
         { rel: 'self', method: 'GET', href: 'http://127.0.0.1:4000/v1/users/:id' },
-        { rel: 'create', method: 'POST', title: 'Create User', href: 'http://127.0.0.1:4000/v1/users/createUser' },
+        { rel: 'create', method: 'POST', title: 'Create User', href: 'http://127.0.0.1:4000/v1/users/createUsers' },
       ],
     };
     res.customSuccess(200, 'List of users.', objectResult);
