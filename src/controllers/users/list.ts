@@ -10,7 +10,14 @@ export const list = async (req: Request, res: Response, next: NextFunction) => {
     const users = await userRepository.find({
       select: ['id', 'username', 'name', 'email', 'role', 'language', 'created_at', 'updated_at'],
     });
-    res.customSuccess(200, 'List of users.', users);
+    const objectResult = {
+      content: users,
+      links: [
+        { rel: 'self', method: 'GET', href: 'http://127.0.0.1:4000/v1/users/:id' },
+        { rel: 'create', method: 'POST', title: 'Create User', href: 'http://127.0.0.1:4000/v1/users/createUser' },
+      ],
+    };
+    res.customSuccess(200, 'List of users.', objectResult);
   } catch (err) {
     const customError = new CustomError(400, 'Raw', `Can't retrieve list of users.`, null, err);
     return next(customError);
